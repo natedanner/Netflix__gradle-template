@@ -15,7 +15,7 @@ import javax.ws.rs.core.MediaType;
  */
 public class TalkClient implements Conversation {
 
-    private WebResource webResource;
+    private final WebResource webResource;
 
     /**
      * Instantiate client.
@@ -30,14 +30,12 @@ public class TalkClient implements Conversation {
 
     @Override
     public Sentence greeting() {
-        Sentence s = webResource.accept(MediaType.APPLICATION_XML).get(Sentence.class);
-        return s;
+        return webResource.accept(MediaType.APPLICATION_XML).get(Sentence.class);
     }
 
     @Override
     public Sentence farewell() {
-        Sentence s = webResource.accept(MediaType.APPLICATION_XML).delete(Sentence.class);
-        return s;
+        return webResource.accept(MediaType.APPLICATION_XML).delete(Sentence.class);
     }
 
     /**
